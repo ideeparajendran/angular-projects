@@ -1,3 +1,24 @@
-p {
-  font-family: Lato;
+* {
+  font-family: 'Open Sans', sans-serif;
 }
+
+.title{
+  font: 32px bold;
+}
+
+.subTitle{
+  font: 28px bold;
+}
+
+.dropdown{
+  font: 28px normal;
+}
+
+.date{
+  font: 18px bold;
+}
+
+.temperature{
+  font: 18px normal;
+}
+

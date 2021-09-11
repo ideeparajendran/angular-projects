@@ -1,4 +1,4 @@
-import { Component, VERSION } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppService } from './app.service';
 import { DatePipe } from '@angular/common';
 
@@ -10,29 +10,38 @@ import { DatePipe } from '@angular/common';
 export class AppComponent {
   cities: string[] = ['Raleigh', 'Chicago', 'Austin', 'Seattle', 'LosAngeles'];
   date: string;
-  convertedDate: string;
-  day: string;
-  dateop: string;
-  temp: string;
+  icon: string;
+  data: string;
+  errorText: string;
+  dataList: any[];
+  imageAlt: string = 'Unable to load..';
   constructor(private appService: AppService, private datePipe: DatePipe) {}
 
-  onClick() {
-    this.appService.fetchData().subscribe(res => {
-      console.log(res);
+  onOptionsSelected(value: string) {
+    console.log('the selected value is ' + value);
+    this.appService.fetchData(value).subscribe(
+      res => {
+        this.data = res['data'];
+        this.dataList = [];
 
-      this.date = res['data'][0]['datetime'];
-      this.convertedDate = this.datePipe.transform(this.date, 'fullDate');
+        for (var item of this.data) {
+          console.log(item);
 
-      var dateData = this.convertedDate.split(',');
-      this.day = dateData[0];
-      this.dateop = dateData[1];
-
-      // temp
-      this.temp = res['data'][0]['temp'] + '°C';
-
-      //icons
-      this.date = res['data'][0]['weather']['icon'];
-
-    });
+          let dataObject: any = {};
+          var transformedDate = this.datePipe
+            .transform(item['datetime'], 'fullDate')
+            .split(',');
+          [dataObject.day, dataObject.date] = transformedDate;
+          dataObject.temperature = item['temp'] + '°C';
+          dataObject.imageSrc =
+            '/assets/icons/' + item['weather']['icon'] + '.png';
+          this.dataList.push(dataObject);
+        }
+        console.log(this.dataList);
+      },
+      error => {
+        this.errorText = 'Forecast details are not available at the moment';
+      }
+    );
   }
 }

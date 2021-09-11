@@ -1,13 +1,22 @@
-<h1> Weather Forecast </h1>
+<h1 class="title">Weather Forecast</h1>
 
-<p> City </p>
+<p class="subTitle">City</p>
 
-<select name="city">
-  <option *ngFor="let item of cities" >
-  {{item}}</option>
+<select class="dropdown" #mySelect (change)="onOptionsSelected(mySelect.value)">
+  <option class="option" *ngFor="let option of cities" [value]="option"
+    >{{option}}</option
+  >
 </select>
-<b
-<button (click)= "onClick()"> make call </button>
+<div *ngFor="let item of dataList">
+  <p class="date">{{item.day}}</p>
+  <p class="date">{{item.date}}</p>
+  <img src="{{item.imageSrc}}" alt="{{imageAlt}}" />
+  <p class="temperature">{{item.temperature}}</p>
+</div>
+<button class="subTitle" (click)="onOptionsSelected(mySelect.value)">
+  Apply
+</button>
+<p class="subTitle" *ngIf="errorText">{{errorText}}</p>
 
 <!-- <mat-form-field appearance="fill">
 <mat-label>Favorite food</mat-label>
@@ -17,9 +26,3 @@
   </mat-option>
 </mat-select>
 </mat-form-field> -->
-
-<hr>
-<p>{{day}}</p>
-<p>{{dateop}}</p>
-<p>{{temp}}</p>
-<!-- ° -->
