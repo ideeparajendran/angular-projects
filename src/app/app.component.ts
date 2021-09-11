@@ -34,7 +34,7 @@ export class AppComponent {
           [dataObject.day, dataObject.date] = transformedDate;
           dataObject.temperature = item['temp'] + '°C';
           dataObject.imageSrc =
-            '/assets/icons/' + item['weather']['icon'] + '.png';
+            '/icons/' + item['weather']['icon'] + '.png';
           this.dataList.push(dataObject);
         }
         console.log(this.dataList);
