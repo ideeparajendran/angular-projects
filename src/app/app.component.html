@@ -1,4 +1,7 @@
-<h1 class="title">Weather Forecast</h1>
+<div class="title">
+  <span>Weather Forecast</span>
+  <span class = "cancel">X</span>
+</div>
 
 <p class="subTitle">City</p>
 
@@ -7,13 +10,14 @@
     >{{option}}</option
   >
 </select>
-<div *ngFor="let item of dataList">
+<br />
+<div class="list" *ngFor="let item of dataList">
   <p class="date">{{item.day}}</p>
   <p class="date">{{item.date}}</p>
   <img src="{{item.imageSrc}}" alt="{{imageAlt}}" />
   <p class="temperature">{{item.temperature}}</p>
 </div>
-<button class="subTitle" (click)="onOptionsSelected(mySelect.value)">
+<button class="subTitle button" (click)="onOptionsSelected(mySelect.value)">
   Apply
 </button>
 <p class="subTitle" *ngIf="errorText">{{errorText}}</p>
