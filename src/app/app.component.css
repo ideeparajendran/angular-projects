@@ -2,23 +2,45 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.title{
-  font: 32px bold;
+.title {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  background-color: black;
+  padding: 10px 20px;
 }
 
-.subTitle{
+.subTitle {
   font: 28px bold;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 10px 20px;
 }
 
-.dropdown{
-  font: 28px normal;
+.dropdown {
+  font-size: 28px;
+  font-style: normal;
+  display: flex;
 }
 
-.date{
-  font: 18px bold;
+.date {
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.temperature{
-  font: 18px normal;
+.temperature {
+  font-size: 18px;
+  font-style: normal;
 }
 
+.list {
+  display: inline-block;
+}
+
+.button {
+  display: block;
+}
+.cancel {
+  margin-right: 5px;
+  float: right;
+}
