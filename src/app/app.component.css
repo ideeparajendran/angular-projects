@@ -2,44 +2,69 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   color: white;
   font-size: 32px;
   font-weight: bold;
-  background-color: black;
+  background-color: #000000;
   padding: 10px 20px;
 }
 
 .subTitle {
-  font: 28px bold;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: bold;
-  padding: 10px 20px;
+  margin: 30px 20px 5px 20px;
 }
 
 .dropdown {
   font-size: 28px;
   font-style: normal;
-  display: flex;
+  background-color: #c5c5c5;
+  margin: -5px 20px 20px 20px;
+  padding: 10px;
+}
+
+.option {
+  margin: 30px;
 }
 
 .date {
   font-size: 18px;
   font-weight: bold;
+  margin-top: -20px;
 }
 
 .temperature {
   font-size: 18px;
   font-style: normal;
+  margin: 50px;
+}
+
+.listBody {
+  display: flex;
+  justify-items: center;
+  flex-flow: wrap;
+  margin: 0 auto;
 }
 
 .list {
-  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
 }
 
 .button {
-  display: block;
+  margin: 0px 0px 0px auto !important;
+  color: white;
+  background-color: #c70039;
+  padding: 10px 60px;
 }
+
 .cancel {
   margin-right: 5px;
   float: right;

@@ -1,32 +1,26 @@
-<div class="title">
-  <span>Weather Forecast</span>
-  <span class = "cancel">X</span>
+<div class = "body">
+  <div class="title">
+    <span>Weather Forecast</span>
+    <span class = "cancel"> X </span>
+  </div>
+
+  <div class="subTitle">City</div>
+
+  <select class="dropdown" #mySelect (change)="onOptionsSelected(mySelect.value)">
+    <option class="option" *ngFor="let option of cities" [value]="option"
+      >{{option}}</option
+    >
+  </select>
+  <div class = "listBody">
+    <div class="list" *ngFor="let item of dataList">
+      <p class="date">{{item.day}}</p>
+      <p class="date">{{item.date}}</p>
+      <img src="{{item.imageSrc}}" alt="{{imageAlt}}" />
+      <p class="temperature">{{item.temperature}}</p>
+    </div>
+  </div>
+  <button class="subTitle button" (click)="onOptionsSelected(mySelect.value)">
+    Apply
+  </button>
+  <p class="subTitle" *ngIf="errorText">{{errorText}}</p>
 </div>
-
-<p class="subTitle">City</p>
-
-<select class="dropdown" #mySelect (change)="onOptionsSelected(mySelect.value)">
-  <option class="option" *ngFor="let option of cities" [value]="option"
-    >{{option}}</option
-  >
-</select>
-<br />
-<div class="list" *ngFor="let item of dataList">
-  <p class="date">{{item.day}}</p>
-  <p class="date">{{item.date}}</p>
-  <img src="{{item.imageSrc}}" alt="{{imageAlt}}" />
-  <p class="temperature">{{item.temperature}}</p>
-</div>
-<button class="subTitle button" (click)="onOptionsSelected(mySelect.value)">
-  Apply
-</button>
-<p class="subTitle" *ngIf="errorText">{{errorText}}</p>
-
-<!-- <mat-form-field appearance="fill">
-<mat-label>Favorite food</mat-label>
-<mat-select [(value)]="selected">
-  <mat-option *ngFor="let food of foods" >
-    {{food}}
-  </mat-option>
-</mat-select>
-</mat-form-field> -->

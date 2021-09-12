@@ -14,30 +14,24 @@ export class AppComponent {
   data: string;
   errorText: string;
   dataList: any[];
-  imageAlt: string = 'Unable to load..';
+  imageAlt: string = 'Unable to load';
   constructor(private appService: AppService, private datePipe: DatePipe) {}
 
   onOptionsSelected(value: string) {
-    console.log('the selected value is ' + value);
     this.appService.fetchData(value).subscribe(
       res => {
         this.data = res['data'];
         this.dataList = [];
-
         for (var item of this.data) {
-          console.log(item);
-
           let dataObject: any = {};
           var transformedDate = this.datePipe
-            .transform(item['datetime'], 'fullDate')
+            .transform(item['datetime'],'EEEE, MMM d, y')
             .split(',');
           [dataObject.day, dataObject.date] = transformedDate;
           dataObject.temperature = item['temp'] + '°C';
-          dataObject.imageSrc =
-            '/icons/' + item['weather']['icon'] + '.png';
+          dataObject.imageSrc = '/icons/' + item['weather']['icon'] + '.png';
           this.dataList.push(dataObject);
         }
-        console.log(this.dataList);
       },
       error => {
         this.errorText = 'Forecast details are not available at the moment';
